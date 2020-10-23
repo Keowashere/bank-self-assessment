@@ -1,7 +1,11 @@
 # Class to print statement
 class Printer
+  def initialize
+    @header = 'date || credit || debit || balance'
+  end
+
   def print_statement(transaction_log)
-    text = 'date || credit || debit || balance'
+    text = @header
     transaction_log.each { |log| text += format_log_entry(log) }
     text
   end

@@ -24,13 +24,7 @@ class Account
   private
 
   def log_transaction(amount, date, type)
-    transaction = Transaction.new(amount, get_date(date), @balance, type)
+    transaction = Transaction.new(amount, date, @balance, type)
     @transaction_log << transaction
-  end
-
-  def get_date(date)
-    date_now = Time.now.strftime('%d/%m/%Y')
-    date ||= date_now
-    date
   end
 end
