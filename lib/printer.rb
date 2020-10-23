@@ -14,9 +14,13 @@ class Printer
 
   def format_log_entry(log)
     text = "\\n#{log.log_date}" \
-           " || #{'%.2f' % log.amount if log.type == :d}" \
-           " || #{'%.2f' % log.amount if log.type == :w}" \
+           " || #{type_amount(log, :d)}" \
+           " || #{type_amount(log, :w)}" \
            " || #{'%.2f' % log.balance}"
     text.gsub('  ', ' ')
+  end
+
+  def type_amount(log, type)
+    '%.2f' % log.amount if log.type == type
   end
 end
