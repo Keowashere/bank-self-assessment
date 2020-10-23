@@ -1,6 +1,5 @@
 require 'transaction'
 
 RSpec.describe Transaction do
-  # it holds a transaction.......
-
+  # coverage is 100%, seems transaction is checked implicitly?
 end
