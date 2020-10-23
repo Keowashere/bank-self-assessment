@@ -4,6 +4,7 @@ class Account
   def initialize
     @balance = 0
     @transaction_log = []
+    @printer = Printer.new
   end
 
   def deposit(amount, date = nil)
@@ -17,26 +18,14 @@ class Account
   end
 
   def print_statement
-    text = 'date || credit || debit || balance'
-    @transaction_log.each { |log| text += format_log_entry(log) }
-    text
+    @printer.print_statement(@transaction_log)
   end
 
   private
 
   def log_transaction(amount, date, type)
-    @transaction_log << { amount: amount,
-                          log_date: get_date(date),
-                          balance: @balance,
-                          type: type }
-  end
-
-  def format_log_entry(log)
-    text = "\\n#{log[:log_date]}" \
-           " || #{'%.2f' % log[:amount] if log[:type] == :d}" \
-           " || #{'%.2f' % log[:amount] if log[:type] == :w}" \
-           " || #{'%.2f' % log[:balance]}"
-    text.gsub('  ', ' ')
+    transaction = Transaction.new(amount, get_date(date), @balance, type)
+    @transaction_log << transaction
   end
 
   def get_date(date)
