@@ -26,7 +26,7 @@ I worked down the Domain model. Here are the three stages/steps that really help
 
 | 1. | 2. |
 |:---:|:---:|
-| Nouns | Property or owner of property? |
+| Nouns | Property or owner of property? | 
 | | |
 | Actions | Owned by? |
 | | |
